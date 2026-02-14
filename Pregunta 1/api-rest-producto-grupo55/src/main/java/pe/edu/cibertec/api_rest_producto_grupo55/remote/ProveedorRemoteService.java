@@ -1,0 +1,12 @@
+package pe.edu.cibertec.api_rest_producto_grupo55.remote;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@FeignClient(name="api-rest-proveedor-grupo5")
+public interface ProveedorRemoteService {
+	
+	@GetMapping("/api-rest/v1/mensajes")
+	String getmensajes();
+	
+}

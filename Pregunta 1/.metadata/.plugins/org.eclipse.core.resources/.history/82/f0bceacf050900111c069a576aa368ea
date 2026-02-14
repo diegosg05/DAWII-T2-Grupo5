@@ -1,0 +1,5 @@
+package pe.edu.cibertec.api_rest_producto_grupo55.Controller;
+
+public class ProveedorController {
+
+}

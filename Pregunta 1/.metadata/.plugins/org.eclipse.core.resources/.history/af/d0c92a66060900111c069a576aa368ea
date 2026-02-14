@@ -1,0 +1,50 @@
+package pe.edu.cibertec.api_rest_producto_grupo55.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import pe.edu.cibertec.api_rest_producto_grupo55.remote.ProveedorRemoteService;
+
+@RestController
+@RequestMapping("/api/v1/productos")
+public class ProductoController {
+	private final ProveedorRemoteService proveedorRemoteService;
+
+	public ProductoController(ProveedorRemoteService proveedorRemoteService) {
+		this.proveedorRemoteService = proveedorRemoteService;
+	}
+	
+	@GetMapping("/productoslistado")
+	public ResponseEntity<List<String>> listadoProductos(){
+		List<String> productos = new ArrayList<>();
+	     productos.add("Laptop");
+	        productos.add("Mouse");
+	        productos.add("Teclado");
+	        productos.add("Monitor");
+	        productos.add("Impresora");
+	        return ResponseEntity.ok(productos);
+	}
+	
+	
+	@GetMapping("/categorylistado")
+	public ResponseEntity<List<String>> listadocategorys() {
+		List<String> categorias = new ArrayList<>();
+		categorias.add("Electrodomésticos");
+		categorias.add("Hogar");
+		categorias.add("Muebles");
+		categorias.add("Tecnológico");
+		categorias.add("Otros");
+		String aviso = proveedorRemoteService.getmensajes();
+		categorias.add(aviso);
+		return ResponseEntity.ok(categorias);
+	}
+	
+	
+	
+
+}

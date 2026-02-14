@@ -1,0 +1,14 @@
+spring.application.name=gateway-server-grupo5
+server.port=8070
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+
+#Enrutamiento de micro-servicios
+spring.cloud.gateway.server.webflux.routes[0].id=api-rest-producto-grupo5
+spring.cloud.gateway.server.webflux.routes[0].uri=http://localhost:8071
+spring.cloud.gateway.server.webflux.routes[0].predicates[0]=Path=/api-rest-producto-grupo5/**
+spring.cloud.gateway.server.webflux.routes[0].filters[0]=StripPrefix=1
+
+spring.cloud.gateway.server.webflux.routes[1].id=api-rest-proveedor-grupo5
+spring.cloud.gateway.server.webflux.routes[1].uri=http://localhost:8072
+spring.cloud.gateway.server.webflux.routes[1].predicates[0]=Path=/api-rest-proveedor-grupo5/**
+spring.cloud.gateway.server.webflux.routes[1].filters[0]=StripPrefix=1
